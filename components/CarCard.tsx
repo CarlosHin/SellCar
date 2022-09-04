@@ -51,7 +51,7 @@ const CarCard = ({ car }) => {
                 </Badge>
             </Flex>
 
-            <Img src={car.image} h="200px" borderRadius="8px" />
+            <Img src={car.image} h="fit-content" borderRadius="8px" />
             <Wrap spacing={1} >
                 <WrapItem>
                     <Badge fontSize="10px">

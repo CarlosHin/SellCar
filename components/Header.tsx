@@ -23,6 +23,7 @@ export default function Header() {
   const [user, setUser] = useState(null);
   const logOut = () => {
     supabase.auth.signOut();
+    router.push(URL)
   };
 
   useEffect(() => {
@@ -45,6 +46,7 @@ export default function Header() {
         src="/assets/images/logo.jpeg"
         h="100%"
         onClick={() => router.push(`${URL}`)}
+        cursor="pointer"
       />
       {!isMobile && (
         <>
@@ -64,16 +66,16 @@ export default function Header() {
             </Button>
           </Stack>
           <Stack>
-          {!user && (
-            <Button onClick={() => router.push(`${URL}/`)} mb={4}>
-            Iniciar sesión
-          </Button>
-          )}
-          {user && (
-            <Button onClick={() => logOut()} mb={4}>
-              Log out
-            </Button>
-          )}
+            {!user && (
+              <Button onClick={() => router.push(`${URL}/`)} mb={4}>
+                Iniciar sesión
+              </Button>
+            )}
+            {user && (
+              <Button onClick={() => logOut()} mb={4}>
+                Log out
+              </Button>
+            )}
           </Stack>
         </>
       )}
