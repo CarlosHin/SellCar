@@ -63,12 +63,18 @@ export default function Header() {
               Cars
             </Button>
           </Stack>
-
+          <Stack>
+          {!user && (
+            <Button onClick={() => router.push(`${URL}/`)} mb={4}>
+            Iniciar sesión
+          </Button>
+          )}
           {user && (
             <Button onClick={() => logOut()} mb={4}>
               Log out
             </Button>
           )}
+          </Stack>
         </>
       )}
       {isMobile && (
@@ -91,11 +97,11 @@ export default function Header() {
                     </MenuItem>
                   )}
                   <MenuItem onClick={() => router.push(`${URL}/cars`)}>
-                    Cars
+                    Coches
                   </MenuItem>
                   {user && (
                     <MenuItem onClick={() => router.push(`${URL}/myCars`)}>
-                      My Cars
+                      Mis Coches
                     </MenuItem>
                   )}
                   {user && (

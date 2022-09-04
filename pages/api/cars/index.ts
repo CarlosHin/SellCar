@@ -1,4 +1,4 @@
-import { supabase } from "../../lib/initSupabase";
+import { supabase } from "../../../lib/initSupabase";
 
 const getCar = async (req, res) => {
   const { data: cars, error } = await supabase

@@ -16,7 +16,7 @@ const Index = () => {
   useEffect(() => {
     // @ts-ignore
     user && router.push(`${URL}/profile`);
-  }, [user]);
+  }, [user,router]);
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
@@ -42,7 +42,7 @@ const Index = () => {
 
   const View = () => {
     return (
-      <Box>
+      <Box bgColor="#171212" p={8} borderRadius="8px">
         <Auth
           supabaseClient={supabase}
           providers={["github", "google"]}

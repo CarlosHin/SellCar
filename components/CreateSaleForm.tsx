@@ -26,23 +26,36 @@ export default function CreateCarForm() {
 
   const toast = useToast();
 
-  const createCar = async ({ brand, model, image, price, description }) => {
-    console.log(brand, model, image);
-    const res = await postFetcher("/api/createSale", session?.access_token, {
+  const createCar = async ({ brand, model, image, price, description, cv, year, fuelType, km }) => {
+    const newCar = {
       brand,
       model,
       price,
       description,
       image,
-    });
-    console.log("res", res);
-    toast({
-      title: "Sale created.",
-      description: "We've created your sale.",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
+      cv,
+      year,
+      fuelType,
+      km
+    }
+    const res = await postFetcher("/api/createSale", session?.access_token, newCar);
+    if (res.error) {
+      toast({
+        title: "Error",
+        description: "Error creating your sale.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "Sale created.",
+        description: "We've created your sale.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   console.log("errors", errors);
@@ -50,7 +63,7 @@ export default function CreateCarForm() {
   useEffect(() => {
     // @ts-ignore
     !user && router.push(URL);
-  }, [user,router]);
+  }, [user, router]);
 
   return (
     <Box>
@@ -84,6 +97,30 @@ export default function CreateCarForm() {
           name="image"
           control={control}
           placeholder="Image"
+          required
+        />
+        <InputController
+          name="fuelType"
+          control={control}
+          placeholder="FuelType"
+          required
+        />
+        <InputController
+          name="km"
+          control={control}
+          placeholder="Kms"
+          required
+        />
+        <InputController
+          name="cv"
+          control={control}
+          placeholder="CV"
+          required
+        />
+        <InputController
+          name="year"
+          control={control}
+          placeholder="Year"
           required
         />
 
