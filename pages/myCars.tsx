@@ -3,7 +3,8 @@ import { Box, Heading } from "@chakra-ui/react";
 import { Auth } from "@supabase/ui";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import BrandFilter from "../components/BrandFilter";
 
 const URL = process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL;
 
@@ -18,16 +19,31 @@ const MyCars = () => {
   const { user, session } = Auth.useUser();
   const router = useRouter();
 
-  const { data, error } = useSWR(
-    session ? ["/api/myCars", session.access_token] : null,
-    fetcher
-  );
+  const [data, setData] = useState(null);
+  const [brand, setBrand] = useState("All");
 
   useEffect(() => {
     !user && router.push(URL);
-  }, [user,router]);
+  }, [user, router]);
+
+
+  async function fetchData() {
+    const url = brand ? `/api/myCars?brand=${brand}` : `/api/myCars`
+    const response = await fetcher(url, session.access_token);
+    setData(response);
+  }
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line 
+  }, [brand]);
+
+  const filterBrand = async (brand: string) => {
+    setBrand(brand);
+  }
+
   return (
     <Box w="full" p={10}>
+      <BrandFilter selectedFilter={brand} filterBrand={filterBrand} />
       <Heading mb={4}>My cars</Heading>
       {!data?.error && <CarList data={data} />}
     </Box>

@@ -7,9 +7,24 @@ const getUserCars = async (req, res) => {
         if (errorGetUser)
             return res.status(401).json({ error: "NO User" })
 
-        const { data: cars, error } = await supabase.from("cars")
+        const brand = req?.query?.brand;
+        let response;
+        if(brand && brand !== "All"){
+            response = await supabase
+            .from("cars")
+            .select("*")
+            .eq("brand",brand)
+            .eq("userId", user.id)
+            .order("price", { ascending: true });
+        }else{
+            response = await supabase
+            .from("cars")
             .select("*")
             .eq("userId", user.id)
+            .order("price", { ascending: true });
+        }
+        const { data: cars, error } = response;
+        
         if (error) return res.status(401).json({ error: error.message })
         return res.status(200).json(cars)
 
