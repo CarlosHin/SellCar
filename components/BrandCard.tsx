@@ -25,12 +25,9 @@ const BrandCard = ({ image, name, onClick, textProps, selectedFilter }: {
             cursor="pointer"
             onClick={() => onClick(name)}
             sx={{
-                transition: "all 0.1s ease-out",
-                _hover: {
-                    transform: "scale(1.05)"
-                }
+                transition: "all 0.1s ease-out"
             }}
-            {...(selectedFilter === name ? { filter: "opacity(1)" } : { filter: "opacity(0.6)" })}
+            {...(selectedFilter === name ? { filter: "opacity(1)", transform: "scale(1.05)" } : { filter: "opacity(0.6)" })}
         >
             <Text
                 p={2}
