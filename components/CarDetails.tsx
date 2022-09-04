@@ -64,7 +64,7 @@ const CarDetails = ({ car }) => (
                 </Text>
             </Box>
         </Stack>
-        <Img src={car.image} w="fit-content" alignSelf="center" maxH="50vh" maxW="50%" borderRadius="8px" />
+        <Img src={car.image} w="fit-content" alignSelf="center" maxH={{ mad: "50vh" }} maxW={{ md: "50%" }} borderRadius="8px" />
 
     </Stack>
 
