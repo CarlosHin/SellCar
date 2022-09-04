@@ -38,6 +38,7 @@ const MyCars = () => {
   }, [brand]);
 
   const filterBrand = async (brand: string) => {
+    setData(null)
     setBrand(brand);
   }
 
