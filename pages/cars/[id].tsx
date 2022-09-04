@@ -16,7 +16,7 @@ const Car = () => {
     const { id } = router.query
     const { data, error } = useSWR([`/api/cars/${id}`, null], fetcher);
     return (
-        <Box w="full" p={10}>
+        <Box w="full" p={{ base: 4, md: 10 }}>
             {data?.id && <CarDetails car={data} />}
         </Box>
     );

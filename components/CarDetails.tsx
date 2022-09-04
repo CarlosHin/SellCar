@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 const CarDetails = ({ car }) => (
-    <Stack p={4} direction={{ base: "column", md: "row" }} spacing={8} align="start" justifyContent="space-between">
+    <Stack p={{ mobile: 0, md: 4 }} direction={{ base: "column", md: "row" }} spacing={8} align="start" justifyContent="space-between">
         <Stack   >
             <Stack direction={{ base: "row", md: "column" }} spacing={4} justifyContent="space-between" >
                 <Box>
