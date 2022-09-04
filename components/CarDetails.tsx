@@ -59,9 +59,7 @@ const CarDetails = ({ car }) => (
                 </WrapItem>
             </Wrap>
             <Box pt={2} pb={2} >
-                <Text maxH="100px" overflow="scroll">
-                    {car.description}
-                </Text>
+                <Text>{car.description}</Text>
             </Box>
         </Stack>
         <Img src={car.image} w="fit-content" alignSelf="center" maxH={{ mad: "50vh" }} maxW={{ md: "50%" }} borderRadius="8px" />
