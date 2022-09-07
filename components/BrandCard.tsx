@@ -8,7 +8,6 @@ const BrandCard = ({ image, name, onClick, textProps, selectedFilter }: {
     textProps?: Partial<TextProps>;
     selectedFilter?: string;
 }) => {
-    console.log(name, selectedFilter === name)
 
     return (
         <Box

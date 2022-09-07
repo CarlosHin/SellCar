@@ -12,9 +12,9 @@ import {
 
 const CarDetails = ({ car }) => (
     <Stack p={{ mobile: 0, md: 4 }} direction={{ base: "column", md: "row" }} spacing={8} align="start" justifyContent="space-between">
-        <Stack   >
-            <Stack direction={{ base: "row", md: "column" }} spacing={4} justifyContent="space-between" >
-                <Box>
+        <Stack w="full">
+            <Stack direction="row" spacing={4} justifyContent="space-between">
+                <Box >
                     <Heading fontSize={{ base: "25px", md: "30px" }} mr={2}>
                         {`${car.brand}`}
                     </Heading>
@@ -30,8 +30,9 @@ const CarDetails = ({ car }) => (
                     w="fit-content"
                     alignSelf="start"
                     justifySelf="end"
-                    p={1}
+                    p={2}
                     fontSize="25px"
+                    borderRadius={4}
                 >
                     {Intl.NumberFormat("es-ES").format(car.price)}$
                 </Badge>
