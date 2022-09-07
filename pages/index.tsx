@@ -12,11 +12,10 @@ const Index = () => {
   const router = useRouter();
   user && router.push(`${URL}/cars`);
 
-  console.log("user", user);
   useEffect(() => {
     // @ts-ignore
     user && router.push(`${URL}/profile`);
-  }, [user,router]);
+  }, [user, router]);
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(

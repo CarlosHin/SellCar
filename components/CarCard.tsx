@@ -18,7 +18,7 @@ const CarCard = ({ car }) => {
 
     return (<Stack
         key={car.id}
-        border="1px solid gray"
+        border="0.5px solid gray"
         p={4}
         borderRadius="4px"
         justifyContent="space-between"
@@ -26,8 +26,16 @@ const CarCard = ({ car }) => {
             router.push(`${URL}/cars/${car.id}`)
         }}
         cursor="pointer"
+        sx={{
+            _hover: {
+                "& img": {
+                    transform: "scale(1.1) rotate(5deg)",
+                    transition: "all 0.2s ease-in-out"
+                }
+            }
+        }}
     >
-        <Stack>
+        <Stack >
             <Flex align="start" justifyContent="space-between">
                 <Stack mr={1} >
                     <Heading fontSize={{ base: "16px", md: "20px" }} mr={2}>
@@ -50,8 +58,10 @@ const CarCard = ({ car }) => {
                     {Intl.NumberFormat("es-ES").format(car.price)}$
                 </Badge>
             </Flex>
+            <Box w="full" overflow="hidden" borderRadius="8px">
 
-            <Img src={car.image} h="fit-content" borderRadius="8px" />
+                <Img src={car.image} h="fit-content" borderRadius="8px" />
+            </Box>
             <Wrap spacing={1} >
                 <WrapItem>
                     <Badge fontSize="10px">
