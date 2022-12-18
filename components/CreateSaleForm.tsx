@@ -1,7 +1,7 @@
 import { Auth } from "@supabase/ui";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { Box, Button, Center, Heading, Stack, useToast } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Box, Button, Center, Heading, Stack, useToast, Select } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import InputController from "./InputController";
 import React from "react";
@@ -23,10 +23,10 @@ export default function CreateCarForm() {
     control,
     formState: { errors },
   } = useForm();
-
+  const [fuelType, setFuelType] = useState("diesel");
   const toast = useToast();
 
-  const createCar = async ({ brand, model, image, price, description, cv, year, fuelType, km }) => {
+  const createCar = async ({ brand, model, image, price, description, cv, year, km }) => {
     const newCar = {
       brand,
       model,
@@ -89,6 +89,10 @@ export default function CreateCarForm() {
               />
             </Box>
           </Stack>
+          <Select placeholder='Diesel' onChange={(e) => setFuelType(e.target.value || "diesel")}>
+            <option value='gasoline'>Gasoline</option>
+            <option value='electric'>Electric</option>
+          </Select>
           <Stack spacing={2}>
 
             <InputController
@@ -110,14 +114,6 @@ export default function CreateCarForm() {
               name="image"
               control={control}
               placeholder="Image"
-              required
-              errors={errors}
-            />
-            <InputController
-              name="fuelType"
-              control={control}
-              placeholder="FuelType"
-              inputProps={{ maxW: "200px" }}
               required
               errors={errors}
             />
