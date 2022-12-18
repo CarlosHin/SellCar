@@ -1,34 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Plataforma de anuncios de coches
 
-## Getting Started
+Plataforma de anuncios de coches, un lugar donde podrás vender o comprar tu coche de manera segura y sencilla.
 
-First, run the development server:
+Puedes visitarla en: https://sell-car-carlosh.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Características principales
+- Autentificación con Google a través de Supabase.
+- Desarrollada con el framework Next.js para una experiencia de usuario ágil y fluida.
+- Subida rápida y sencilla de anuncios.
+- Posibilidad de filtrar y buscar anuncios por diferentes criterios.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Requisitos
+Para utilizar esta plataforma, es necesario tener un navegador web y una cuenta de Google.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Instalación y uso
+Para probar esta plataforma en tu máquina local, sigue estos pasos:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Clona este repositorio.
+- Instala las dependencias ejecutando `yarn install` en la raíz del proyecto.
+- Crea un archivo `.env` en la raíz del proyecto y añade tus credenciales de Google y Supabase (puedes tomar de referencia el archivo `env.demo`).
+- Arranca el servidor de desarrollo ejecutando `yarn dev`.
+- Abre tu navegador web y visita http://localhost:3000 para acceder a la plataforma.
 
-## Learn More
+## Contribución
+Si quieres contribuir a este proyecto, no dudes en abrir una issue o enviar un pull request. Estar´w encantado de recibir tus sugerencias y mejoras.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-------------
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# Car Advertisement Platform
+
+Car advertisement platform, a place where you can safely sell or buy your car.
+
+You can visit it at: https://sell-car-carlosh.vercel.app
+
+## Main features
+- Google authentication through Supabase.
+- Developed with the Next.js framework for a smooth and agile user experience.
+- Quick and easy advertisement uploading.
+- Ability to filter and search advertisements by different criteria.
+
+## Requirements
+To use this platform, you need to have a web browser and a Google account.
+
+## Installation and usage
+To try out this platform on your local machine, follow these steps:
+
+- Clone this repository.
+- Install the dependencies by running `yarn install` in the root of the project.
+- Create a `.env` file in the root of the project and add your Google and Supabase credentials (you can use the `env.demo` file as a reference).
+- Start the development server by running `yarn dev`.
+- Open your web browser and visit http://localhost:3000 to access the platform.
+
+## Contribution
+If you want to contribute to this project, don't hesitate to open an issue or send a pull request. I'll be happy to receive your suggestions and improvements.
