@@ -15,6 +15,9 @@ const URL = process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL;
 
 const CarCard = ({ car }) => {
     const router = useRouter();
+    const src = car.image.includes("http") ?
+        car.image :
+        `https://hplhhgpsejrueiebrxac.supabase.co/storage/v1/object/public/${car.image}`;
 
     return (<Stack
         key={car.id}
@@ -60,7 +63,7 @@ const CarCard = ({ car }) => {
             </Flex>
             <Box w="full" overflow="hidden" borderRadius="8px">
 
-                <Img src={car.image} h="fit-content" borderRadius="8px" />
+                <Img src={src} h="fit-content" borderRadius="8px" />
             </Box>
             <Wrap spacing={1} >
                 <WrapItem>

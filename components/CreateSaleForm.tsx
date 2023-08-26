@@ -5,6 +5,8 @@ import { Box, Button, Center, Heading, Stack, useToast, Select } from "@chakra-u
 import { useForm } from "react-hook-form";
 import InputController from "./InputController";
 import React from "react";
+import { supabase } from "../lib/initSupabase";
+
 const URL = process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL;
 
 const postFetcher = (url, token, body) =>
@@ -24,9 +26,24 @@ export default function CreateCarForm() {
     formState: { errors },
   } = useForm();
   const [fuelType, setFuelType] = useState("diesel");
+  const [media, setMedia] = useState("diesel");
   const toast = useToast();
+  const onChangeImage = (e) => {
+    setMedia(e.target.files[0])
+  }
+  const createCar = async ({ brand, model, price, description, cv, year, km }) => {
+    let image = "";
+    if (media) {
 
-  const createCar = async ({ brand, model, image, price, description, cv, year, km }) => {
+      const response = await supabase
+        .storage
+        .from('cars')
+        .upload(`image_${brand}_${model}_${Date.now()}.png`, media, {
+          cacheControl: '3600',
+          upsert: false
+        })
+      image = response?.data?.Key || "";
+    }
     const newCar = {
       brand,
       model,
@@ -110,13 +127,7 @@ export default function CreateCarForm() {
               required
               errors={errors}
             />
-            <InputController
-              name="image"
-              control={control}
-              placeholder="Image"
-              required
-              errors={errors}
-            />
+            <input type="file" onChange={onChangeImage} />
           </Stack>
 
           <Stack direction="row" spacing={2}>
